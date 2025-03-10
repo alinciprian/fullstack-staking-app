@@ -170,7 +170,6 @@ contract SimpleStaking is ReentrancyGuard {
     }
 
     /**
-     *
      * @param _account The account we want to compute rewards for
      */
     function _earned(address _account) internal view returns (uint256) {
