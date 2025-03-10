@@ -63,9 +63,12 @@ contract SimpleStaking is ReentrancyGuard {
         _;
     }
 
-    // @dev This modifier is used every time a stake/withdraw is made so that we make sure to keep the database updated for each user.
-    // The modifier makes sure the reward distribution is fair. No user can benefit from rewards accumulated in rewardPerTokenStored before
-    // his stake was made. rewardPerTokenDebt keeps thack of the reward that was accumulated the moment a stake is made.
+    /**
+     *
+     * This modifier is used every time a stake/withdraw is made so that we make sure to keep the database updated for each user.
+     * The modifier makes sure the reward distribution is fair. No user can benefit from rewards accumulated in rewardPerTokenStored before
+     * his stake was made. rewardPerTokenDebt keeps thack of the reward that was accumulated the moment a stake is made.
+     */
     modifier updateRewardPerToken(address _account) {
         rewardPerTokenStored = _rewardPerToken();
         lastRewardTimestamp = block.timestamp;
