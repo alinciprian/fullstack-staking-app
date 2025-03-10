@@ -4,6 +4,11 @@ pragma solidity 0.8.28;
 import {ERC20} from "../lib/openzeppelin-contracts/contracts/token/ERC20/ERC20.sol";
 import {Ownable} from "../lib/openzeppelin-contracts/contracts/access/Ownable.sol";
 
+/**
+ * @title SimpleToken
+ * @author @AlinCip
+ * @notice This token is created to test how SimpleStaking contract works
+ */
 contract SimpleToken is ERC20 {
     address owner;
 

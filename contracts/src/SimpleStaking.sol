@@ -137,6 +137,7 @@ contract SimpleStaking is ReentrancyGuard {
         if (reward <= 0) revert SimpleStaking__CurrentlyZeroReward();
         rewards[msg.sender] = 0;
         bool success = rewardToken.transfer(msg.sender, reward);
+        if (!success) revert SimpleStaking__TransferFailed();
         emit RewardHarvested(msg.sender, reward);
     }
 

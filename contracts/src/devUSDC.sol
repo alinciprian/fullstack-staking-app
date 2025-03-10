@@ -3,6 +3,12 @@ pragma solidity 0.8.28;
 
 import {ERC20} from "../lib/openzeppelin-contracts/contracts/token/ERC20/ERC20.sol";
 
+/**
+ * @title devUSDC Token
+ * @author @AlinCip
+ * @notice This token is intented to be used as reward for staking in the SimpleStaking contract
+ * An initial supply will be minted and then sent to the SimpleStaking contract
+ */
 contract devUSDC is ERC20 {
     address public owner;
     uint256 public initialSupply;
