@@ -64,7 +64,6 @@ contract SimpleStaking is ReentrancyGuard {
     }
 
     /**
-     *
      * This modifier is used every time a stake/withdraw is made so that we make sure to keep the database updated for each user.
      * The modifier makes sure the reward distribution is fair. No user can benefit from rewards accumulated in rewardPerTokenStored before
      * his stake was made. rewardPerTokenDebt keeps thack of the reward that was accumulated the moment a stake is made.
@@ -85,7 +84,6 @@ contract SimpleStaking is ReentrancyGuard {
     ///////////////////
 
     /**
-     *
      * @param _stakingToken The token that will be staked, in this case - STK
      * @param _rewardToken The token given as reward, in this case - dUSDC
      * @param _rewardRate The amount of dUSDC per second that will be distributed to the entire pool of staked STK
@@ -103,9 +101,7 @@ contract SimpleStaking is ReentrancyGuard {
     ///////////////////
 
     /**
-     *
      * @param _amount Amount of tokens that will be transfered for staking.
-     *
      */
     function stake(uint256 _amount) external updateRewardPerToken(msg.sender) {
         if (_amount <= 0) revert SimpleStaking__NeedsMoreThanZero();
@@ -117,7 +113,6 @@ contract SimpleStaking is ReentrancyGuard {
     }
 
     /**
-     *
      * @param _amount The amount of tokens to be withdrew from the contract.
      * Check-Effects-Interaction pattern is being used to ensure reentrancy resilience
      */
@@ -145,7 +140,6 @@ contract SimpleStaking is ReentrancyGuard {
     }
 
     /**
-     *
      * @param _newRewardRate The new reward rate
      * @dev Intended to be used only by the owner of the contract
      */
