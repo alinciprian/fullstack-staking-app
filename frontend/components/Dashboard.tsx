@@ -21,14 +21,11 @@ import {
 } from "@wagmi/core";
 import { wagmiConfig } from "../components/providers";
 import { useState, useEffect } from "react";
-import { devUSDCABI } from "../config/devUSDCABI";
 import { SimpleStakingABI } from "../config/SimpleStakingABI";
 import { SimpleTokenABI } from "../config/SimpleTokenABI";
 
 export default function Dashboard() {
-  const { ready, user, authenticated, connectWallet, logout } = usePrivy();
-  const { address, isConnected, isConnecting, isDisconnected } = useAccount();
-  const { wallets, ready: walletsReady } = useWallets();
+  const { address, isConnected } = useAccount();
   const { disconnect } = useDisconnect();
 
   const [balanceSTK, setBalanceSTK] = useState<BalanceType | null>(null);
