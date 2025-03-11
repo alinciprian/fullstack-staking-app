@@ -8,8 +8,8 @@ import {Ownable} from "../lib/openzeppelin-contracts/contracts/access/Ownable.so
 /**
  * @title Staking Contract
  * @author AlinCip
- * @notice This contract implements a staking mechanism designed to calculate how much interest a single token aquires over the staking period.
- * The algorithm is ispired by Synthetix.
+ * @notice This contract implements a staking mechanism designed to calculate how much interest a single token acquires over the staking period.
+ * The algorithm is inspired by Synthetix.
  */
 contract SimpleStaking is ReentrancyGuard {
     ///////////////////
@@ -31,7 +31,7 @@ contract SimpleStaking is ReentrancyGuard {
     address public owner;
     // the amount of reward per second that is distributed to the entire pool of staked tokens
     uint256 public rewardRate;
-    // the total amount of staked tokens help by the contract
+    // the total amount of staked tokens held by the contract
     uint256 public totalSupply;
     //last time rewards were distributed
     uint256 lastRewardTimestamp;
@@ -66,7 +66,7 @@ contract SimpleStaking is ReentrancyGuard {
     /**
      * This modifier is used every time a stake/withdraw is made so that we make sure to keep the database updated for each user.
      * The modifier makes sure the reward distribution is fair. No user can benefit from rewards accumulated in rewardPerTokenStored before
-     * his stake was made. rewardPerTokenDebt keeps thack of the reward that was accumulated the moment a stake is made.
+     * his stake was made. rewardPerTokenDebt keeps track of the reward that was accumulated the moment a stake is made.
      */
     modifier updateRewardPerToken(address _account) {
         rewardPerTokenStored = _rewardPerToken();
@@ -113,7 +113,7 @@ contract SimpleStaking is ReentrancyGuard {
     }
 
     /**
-     * @param _amount The amount of tokens to be withdrew from the contract.
+     * @param _amount The amount of tokens to be withdrawn from the contract.
      * Check-Effects-Interaction pattern is being used to ensure reentrancy resilience
      */
     function withdraw(uint256 _amount) external updateRewardPerToken(msg.sender) {
@@ -183,7 +183,7 @@ contract SimpleStaking is ReentrancyGuard {
     }
 
     /**
-     * used to retrieve the avalible reward accumulated for rach user
+     * used to retrieve the avalible reward accumulated for each user
      */
     function getAvalibleReward(address _user) external view returns (uint256) {
         return _earned(_user);
