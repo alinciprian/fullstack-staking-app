@@ -1,0 +1,11 @@
+stake.t.sol
+└── given user calls stake function
+    ├── when the amount is invalid
+    │   └── it should revert with  SimpleStaking__NeedsMoreThanZero();
+    └── when the amount is valid
+        ├── it should update the balanceOf and the totalSupply
+        └── it should transfer the token in the staking contract
+            ├── when the transfer fails
+            │   └── it should revert with SimpleStaking__TransferFailed();
+            └── when the transfer is succesful
+                └── it should emit event

@@ -1,0 +1,12 @@
+withdraw.t.sol
+└── given user calls withdraw function
+    ├── when the amount is invalid
+    │   └── it should revert if amount is 0
+    │   └── it should revert if the amount is less than balance
+    └── when the amount is valid
+        ├── it should update the balanceOf and the totalSupply
+        └── it should transfer the token in the staking contract
+            ├── when the transfer fails
+            │   └── it should revert with SimpleStaking__TransferFailed();
+            └── when the transfer is succesful
+                └── it should emit event
